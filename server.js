@@ -9,7 +9,17 @@ const bootcamps = require('./routes/bootcamps');
 
 // Load env vars
 dotenv.config({ path: './config/config.env' });
- 
+
+// Middleware (always call 'next' as a param so that it knows to move on to the next middleware in cycle)
+const logger = (req, res, next) => {
+  req.hello = 'hello world';
+  console.log('middleware ran')
+  next()
+}
+
+app.use(logger)
+
+
 
 // Mount routers
 app.use('/api/v1/bootcamps', bootcamps);

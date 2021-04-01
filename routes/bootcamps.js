@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-// Import controller methods by pointing to correct file path
+// Import controller methods by assigning to variables pointing to correct file path
 const {
   getBootcamp,
-  getBootcamps,
+  getBootcamps, // needs id
   createBootcamp,
-  updateBootcamp,
-  deleteBootcamp,
+  updateBootcamp, // needs id
+  deleteBootcamp, // needs id
 } = require('../controllers/bootcamps');
 
 // Routes to root path
