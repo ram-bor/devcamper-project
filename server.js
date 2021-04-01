@@ -9,11 +9,8 @@ const bootcamps = require('./routes/bootcamps');
 
 // Load env vars
 dotenv.config({ path: './config/config.env' });
+ 
 
-
-app.get('/', (req, res) => {
-  res.status(200).json({ success: true, data: { id: '1' } })
-})
 // Mount routers
 app.use('/api/v1/bootcamps', bootcamps);
 
