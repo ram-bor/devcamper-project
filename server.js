@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const app = express();
 // const logger = require('./middleware/logger')
 const morgan = require('morgan')
+const colors = require('colors')
 const connectDB = require('./config/db')
 // Load env vars
 dotenv.config({ path: './config/config.env' });
@@ -34,14 +35,14 @@ const PORT = process.env.PORT || 8000;
 // Call server
 const server = app.listen(
   PORT,
-  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
+  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold)
 );
 
 
 // 
 // Handle unhandled promise rejections aka GLOBAL HANDLER, you could also just do a TRY -> CATCH in mongoose.connect
 process.on('unhandledRejection', (err, promise) => {
-  console.log(`Unhandled rejection please fix this: ${err.message}`)
+  console.log(`Error please fix this: ${err.message}`.red.bold)
   // Close server and exit process
   server.close(() => process.exit(1))
 })
