@@ -111,4 +111,5 @@ const BootcampSchema = new Schema({
         toObject: { virtuals: true }
     }
 );
-})
+
+module.exports = mongoose.model('Bootcamp', BootcampSchema)
