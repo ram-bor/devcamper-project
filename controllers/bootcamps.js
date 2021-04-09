@@ -6,14 +6,17 @@ const Bootcamp = require('../models/Bootcamp')
 exports.getBootcamps = async (req, res, next) => {
   try {
     const bootcamps = await Bootcamp.find();
-    res.status(200).json({
-      success: true,
-      data: bootcamps
-    })
+    res.json(bootcamps)
+    // res.status(200).json({
+    //   success: true,
+    //   data: bootcamps
+    // })
   } catch (error) {
     res.status(400).json({
       success: false
     })
+    console.log("error", error)
+
   }
 };
 
@@ -23,7 +26,12 @@ exports.getBootcamps = async (req, res, next) => {
 exports.getBootcamp = async (req, res, next) => {
   try {
     const bootcamp = await Bootcamp.findById(req.params.id);
+    // check for bootcamp and if its formatted (always return the first response when you have two responses in the try block because you will get a 'headers has already been returned')
+    if (!bootcamp) {
+      // checks for correct formatted id but non-bootcamp
+      return res.status(400).json({ success: false })
 
+    }
     res.status(200).json({ success: true, data: bootcamp })
   } catch (error) {
     res.status(400).json({ success: false })
