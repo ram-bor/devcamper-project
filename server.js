@@ -24,6 +24,8 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
 }
 
+// Body parser (included with express, no need to download it)
+app.use(express.json());
 
 
 // Mount routers
