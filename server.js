@@ -10,7 +10,7 @@ const connectDB = require('./config/db')
 dotenv.config({ path: './config/config.env' });
 
 // Connect to database
-connectDB()
+connectDB();
 
 // Route files
 const bootcamps = require('./routes/bootcamps');
