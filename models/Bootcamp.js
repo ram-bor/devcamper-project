@@ -62,12 +62,12 @@ const BootcampSchema = new Schema({
         type: [String],
         required: true,
         enum: [
-            'Web Development ',
-            'Mobile Development ',
-            'UI/UX ',
-            'Data Science ',
-            'Business ',
-            'Other '
+            'Web Development',
+            'Mobile Development',
+            'UI/UX',
+            'Data Science',
+            'Business',
+            'Other'
         ]
     },
     averageRating: {
