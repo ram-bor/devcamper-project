@@ -6,6 +6,7 @@ const app = express();
 const morgan = require('morgan')
 const colors = require('colors')
 const connectDB = require('./config/db')
+const errorHandler = require('./middleware/error')
 // Load env vars
 dotenv.config({ path: './config/config.env' });
 
@@ -30,6 +31,8 @@ app.use(express.json());
 
 // Mount routers
 app.use('/api/v1/bootcamps', bootcamps);
+
+app.use(errorHandler)
 
 // Set up env port and if not available it will listen on 8000
 const PORT = process.env.PORT || 8000;
