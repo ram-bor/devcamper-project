@@ -1,11 +1,24 @@
+
+const ErrorResponse = require('../utils/errorResponse')
 const errorHandler = (err, req, res, next) => {
+    let error = { ...err }
+
+    error.message = err.message
+
+
     // Log to console for dev
     console.log(err.stack.red)
 
-    res.status(err.statusCode || 500).json({
+    // Mongoose bad ObjecId
+    if (err.name === 'CastError') {
+        const message = `Resource not found with id of ${err.value}`
+        error = new ErrorResponse(message, 404);
+    }
+    console.log(err.name)
+    res.status(error.statusCode || 500).json({
         success: false,
-        error: err.message || 'Server Error'
+        error: error.message || 'Server Error'
     })
 }
 
-module.exports = errorHandler
+module.exports = errorHandler;
