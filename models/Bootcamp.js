@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 // const slugify = require('slugify');
 // const geocoder = require('../utils/geocoder');
 
+// SLUGS INCOMING
 const Schema = mongoose.Schema;
 
 const BootcampSchema = new Schema({
