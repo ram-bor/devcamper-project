@@ -33,7 +33,7 @@ app.use(express.json());
 // Mount routers
 app.use('/api/v1/bootcamps', bootcamps);
 
-app.use(errorHandler)
+app.use(errorHandler) // has to be after routers since that is where it is referenced
 
 // Set up env port and if not available it will listen on 8000
 const PORT = process.env.PORT || 8000;
