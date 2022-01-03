@@ -122,10 +122,14 @@ BootcampSchema.pre('save', async function (next) {
         street: loc[0].streetName,
         city: loc[0].city,
         state: loc[0].stateCode,
-        zipcode: loc[0].streetName,
+        zipcode: loc[0].zipcode,
         country: loc[0].countryCode,
     }
+    // Do not save address in database
+    this.address = undefined
+    next()
 
 })
+
 
 module.exports = mongoose.model('Bootcamp', BootcampSchema)
