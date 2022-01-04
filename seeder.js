@@ -30,7 +30,7 @@ const importData = async () => {
     }
     catch (err) {
 
-        console.log()git
+        console.log()
     }
 }
 
