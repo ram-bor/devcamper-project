@@ -16,6 +16,7 @@ connectDB();
 
 // Route files
 const bootcamps = require('./routes/bootcamps');
+const courses = require('./routes/courses');
 
 
 // call middleware module (custom made by yours truly)
@@ -32,6 +33,7 @@ app.use(express.json());
 
 // Mount routers
 app.use('/api/v1/bootcamps', bootcamps);
+app.use('/api/v1/courses', courses);
 
 app.use(errorHandler) // has to be after routers since that is where it is referenced
 
