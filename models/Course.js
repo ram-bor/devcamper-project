@@ -28,7 +28,7 @@ const CourseSchema = new Schema({
         required: [true, 'Please add a minimum skill']
     },
     scholarshipAvailable: {
-        type: boolean,
+        type: Boolean,
         default: false,
     },
     createdAt: {
@@ -40,9 +40,6 @@ const CourseSchema = new Schema({
         ref: 'Bootcamp',
         required: true
     },
-
-
-
 })
 
 module.exports = mongoose.model('Course', CourseSchema)

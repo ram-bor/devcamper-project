@@ -3,11 +3,20 @@ const mongoose = require('mongoose')
 const colors = require('colors')
 const dotenv = require('dotenv')
 
+//  Read JSON files
+// const bootcamps = JSON.parse(fs.readFileSync(`${__dirname}/_data/bootcamps.json`, 'utf-8'))
+
+// or just load JSON data.....
+const bootcamps = require('./_data/bootcamps.json')
+const courses = require('./_data/courses.json')
+console.log(courses)
+
 // Load env vars
 dotenv.config({ path: './config/config.env' })
 
 // Load models
 const Bootcamp = require('./models/Bootcamp')
+const Course = require('./models/Course')
 
 //  Connect to db
 mongoose.connect(process.env.MONGO_URI, {
@@ -16,9 +25,6 @@ mongoose.connect(process.env.MONGO_URI, {
     useFindAndModify: false,
     useUnifiedTopology: true
 })
-
-//  Read JSON files
-const bootcamps = JSON.parse(fs.readFileSync(`${__dirname}/_data/bootcamps.json`, 'utf-8'))
 
 // Import into DB
 const importData = async () => {
