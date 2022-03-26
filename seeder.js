@@ -9,7 +9,6 @@ const dotenv = require('dotenv')
 // or just load JSON data.....
 const bootcamps = require('./_data/bootcamps.json')
 const courses = require('./_data/courses.json')
-console.log(courses)
 
 // Load env vars
 dotenv.config({ path: './config/config.env' })
@@ -30,6 +29,7 @@ mongoose.connect(process.env.MONGO_URI, {
 const importData = async () => {
     try {
         await Bootcamp.create(bootcamps)
+        await Course.create(courses)
 
         console.log('Data imported...'.green.inverse)
         process.exit()
@@ -44,6 +44,7 @@ const importData = async () => {
 const deleteData = async () => {
     try {
         await Bootcamp.deleteMany()
+        await Course.deleteMany()
 
         console.log('Data destroyed...'.red.inverse)
         process.exit()
