@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
 // Import controller methods by assigning to variables pointing to correct file path
 const {
